@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Professional Certificate in Event Design — Cindrebay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Design-system tokens ── */
+  :root {
+    --rausch: #ff385c;
+    --rausch-active: #e00b41;
+    --ink: #222222;
+    --body-text: #3f3f3f;
+    --muted: #6a6a6a;
+    --canvas: #ffffff;
+    --surface-soft: #f7f7f7;
+    --surface-strong: #f2f2f2;
+    --hairline: #dddddd;
+    --hairline-soft: #ebebeb;
+    --shadow-float:
+      rgba(0,0,0,.02) 0 0 0 1px,
+      rgba(0,0,0,.04) 0 2px 6px 0,
+      rgba(0,0,0,.1)  0 4px 8px 0;
+    --font-sans: 'Inter', -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+    --ease: cubic-bezier(.2,0,0,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--canvas);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { display: block; max-width: 100%; }
+  a   { color: inherit; text-decoration: none; }
+
+  /* ── Utility ── */
+  .label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rausch);
+    margin-bottom: 14px;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 34px;
+    border-radius: 8px;
+    background: var(--rausch);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--ease) 150ms;
+    border: none;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--rausch-active); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 34px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.55);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background var(--ease) 150ms;
+    white-space: nowrap;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.2); }
+
+  /* ── Nav ── */
+  nav {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 64px;
+  }
+
+  .nav-logo-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.4px;
+    line-height: 1;
+  }
+  .nav-logo-sub {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.82);
+    margin-top: 4px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-links a {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,.92);
+    transition: color var(--ease) 150ms;
+  }
+  .nav-links a:hover { color: #fff; }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 9999px;
+    background: var(--rausch);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--ease) 150ms;
+    border: none;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--rausch-active); }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    height: 760px;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20,17,14,.46) 0%, rgba(20,17,14,.08) 34%, rgba(20,17,14,.74) 100%);
+  }
+  .hero-content {
+    position: absolute;
+    left: 64px;
+    right: 64px;
+    bottom: 56px;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #f4c9b4;
+    margin-bottom: 18px;
+  }
+  .hero-h1 {
+    margin: 0;
+    font-size: 72px;
+    line-height: 1.0;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -1.6px;
+    max-width: 17ch;
+  }
+  .hero-sub {
+    margin: 24px 0 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: rgba(255,255,255,.9);
+    max-width: 56ch;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 56px;
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,.22);
+    flex-wrap: wrap;
+  }
+  .hero-stat-value {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.7);
+    margin-top: 5px;
+  }
+
+  /* ── Section shared ── */
+  section { width: 100%; }
+
+  /* ── Intro ── */
+  .intro { padding: 104px 64px 88px; }
+
+  .intro-headline {
+    margin: 0;
+    font-size: 38px;
+    line-height: 1.28;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.6px;
+    max-width: 24ch;
+  }
+  .intro-headline span { color: var(--rausch); }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 64px;
+    margin-top: 48px;
+    border-top: 1px solid var(--hairline);
+  }
+  .intro-item {
+    display: flex;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+  .intro-num {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--rausch);
+    min-width: 34px;
+    flex-shrink: 0;
+  }
+  .intro-item p {
+    margin: 0;
+    font-size: 17px;
+    color: var(--body-text);
+    line-height: 1.5;
+  }
+  .intro-item strong { color: var(--ink); font-weight: 600; }
+
+  .intro-body {
+    margin: 42px 0 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--body-text);
+    max-width: 74ch;
+  }
+  .intro-body strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Snapshot ── */
+  .snapshot { background: var(--surface-soft); padding: 88px 64px; }
+
+  .snapshot h2 {
+    margin: 0 0 44px;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.8px;
+    max-width: 28ch;
+  }
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .snapshot-cell {
+    background: var(--surface-soft);
+    padding: 26px 24px;
+  }
+  .snapshot-cell-label {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .snapshot-cell-value {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 10px;
+  }
+  .snapshot-cell-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── Difference ── */
+  .difference { padding: 96px 64px; }
+
+  .difference-intro { max-width: 62ch; }
+  .difference-intro h2 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.8px;
+  }
+  .difference-intro p {
+    margin: 16px 0 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .difference-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 44px;
+    margin-top: 56px;
+  }
+  .diff-card { border-top: 1px solid var(--ink); padding-top: 22px; }
+  .diff-card svg { display: block; }
+  .diff-card h3 {
+    margin: 16px 0 0;
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .diff-card p {
+    margin: 10px 0 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  /* ── Curriculum ── */
+  .curriculum { background: var(--surface-soft); padding: 96px 64px; }
+
+  .curriculum-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .curriculum-header h2 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.8px;
+    max-width: 36ch;
+  }
+
+  .curriculum-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    margin-top: 48px;
+  }
+  .module {
+    background: var(--surface-soft);
+    padding: 24px 22px;
+  }
+  .module-num {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--rausch);
+  }
+  .module-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 6px;
+  }
+  .module-sub {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ── Portfolio grid ── */
+  .portfolio { padding: 96px 64px; }
+  .portfolio h2 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.8px;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .portfolio-card-img {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background: var(--surface-strong);
+  }
+  .portfolio-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 9999px;
+    padding: 5px 12px;
+    box-shadow: var(--shadow-float);
+  }
+  .portfolio-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 12px;
+  }
+  .portfolio-card-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── India advantage ── */
+  .india-split {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+  }
+  .india-img-col {
+    position: relative;
+    min-height: 560px;
+  }
+  .india-img-col img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .india-text-col {
+    padding: 88px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .india-text-col h2 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.7px;
+    line-height: 1.08;
+  }
+  .india-text-col p { margin: 0; }
+  .india-text-col .p1 {
+    margin-top: 22px;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--body-text);
+  }
+  .india-text-col .p2 {
+    margin-top: 18px;
+    font-size: 20px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .india-text-col .p3 {
+    margin-top: 18px;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  /* ── CTA banner ── */
+  .cta-banner {
+    position: relative;
+    overflow: hidden;
+    padding: 120px 64px;
+    text-align: center;
+  }
+  .cta-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cta-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20,17,14,.78), rgba(20,17,14,.86));
+  }
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .cta-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #f4c9b4;
+    margin-bottom: 18px;
+  }
+  .cta-inner h2 {
+    margin: 0;
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -1.2px;
+  }
+  .cta-inner p {
+    margin: 22px auto 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255,255,255,.88);
+    max-width: 54ch;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .cta-tagline {
+    margin: 38px 0 0 !important;
+    font-size: 21px;
+    font-weight: 500;
+    color: #f4c9b4 !important;
+    font-style: italic;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--ink);
+    padding: 60px 64px 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .footer-brand-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.4px;
+  }
+  .footer-brand-sub {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #f4c9b4;
+    margin-top: 5px;
+  }
+  .footer-brand-desc {
+    margin: 18px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,.65);
+    max-width: 42ch;
+  }
+  .footer-col-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    font-size: 14px;
+    color: rgba(255,255,255,.65);
+  }
+  .footer-links a {
+    transition: color var(--ease) 150ms;
+  }
+  .footer-links a:hover { color: #fff; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 22px;
+    font-size: 12.5px;
+    color: rgba(255,255,255,.45);
+  }
+</style>
+</head>
+<body>
+
+<!-- ════ HERO ════ -->
+<div class="hero">
+  <img class="hero-img"
+       src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=80"
+       alt="Elegant event design">
+  <div class="hero-overlay"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#" style="text-decoration:none;">
+      <div class="nav-logo-name">Cindrebay</div>
+      <div class="nav-logo-sub">Event Design</div>
+    </a>
+    <div class="nav-links">
+      <a href="#curriculum">Curriculum</a>
+      <a href="#difference">Why Cindrebay</a>
+      <a href="#careers">Careers</a>
+      <a href="#apply" class="nav-cta">Apply now</a>
+    </div>
+  </nav>
+
+  <!-- Hero copy -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">Professional Certificate · 4 Months</div>
+    <h1 class="hero-h1">Learn to design celebrations, not just organise events.</h1>
+    <p class="hero-sub">A design-led certificate in Event Design, Décor &amp; Experiential Styling — for learners ready to enter weddings, luxury celebrations, brand launches and curated private experiences.</p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">Apply / Enrol now</a>
+      <a href="#curriculum" class="btn-ghost">Explore the curriculum</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-value">4 months</div>
+        <div class="hero-stat-label">Duration</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">120+ hrs</div>
+        <div class="hero-stat-label">Guided learning</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">15 modules</div>
+        <div class="hero-stat-label">Design-led</div>
+      </div>
+      <div>
+        <div class="hero-stat-value">Portfolio</div>
+        <div class="hero-stat-label">Final outcome</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ INTRO ════ -->
+<section class="intro">
+  <div class="label">The world of event design</div>
+  <p class="intro-headline">Events are no longer remembered for their food or flowers — but for <span>how they made people feel.</span></p>
+  <div class="intro-grid">
+    <div class="intro-item"><span class="intro-num">01</span><p><strong>A wedding entrance</strong> that makes guests pause.</p></div>
+    <div class="intro-item"><span class="intro-num">02</span><p><strong>A product launch</strong> that feels like a brand story.</p></div>
+    <div class="intro-item"><span class="intro-num">03</span><p><strong>A private celebration</strong> that feels intimate and personal.</p></div>
+    <div class="intro-item"><span class="intro-num">04</span><p><strong>A corporate evening</strong> carrying elegance and atmosphere.</p></div>
+  </div>
+  <p class="intro-body">Cindrebay's certificate is not a conventional event-management programme. It approaches events as <strong>designed spatial experiences</strong> — bringing together space planning, décor, styling, lighting, floral design, colour, client presentation and live execution. Anchored by Cindrebay India, with global inputs from London and Italy.</p>
+</section>
+
+<!-- ════ SNAPSHOT ════ -->
+<section class="snapshot" id="snapshot">
+  <div class="label">Course snapshot</div>
+  <h2>A serious creative discipline, structured over four months.</h2>
+  <div class="snapshot-grid">
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Duration</div><div class="snapshot-cell-value">4 months</div><div class="snapshot-cell-sub">120+ guided hours</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Mode</div><div class="snapshot-cell-value">Online · Hybrid</div><div class="snapshot-cell-sub">Flexible formats</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Level</div><div class="snapshot-cell-value">Beginner → Intermediate</div><div class="snapshot-cell-sub">No prior experience</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Outcome</div><div class="snapshot-cell-value">Portfolio project</div><div class="snapshot-cell-sub">Professional presentation</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Academic anchor</div><div class="snapshot-cell-value">Cindrebay India</div><div class="snapshot-cell-sub">Mentor-led reviews</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Global exposure</div><div class="snapshot-cell-value">London &amp; Italy</div><div class="snapshot-cell-sub">International collaborators</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Format</div><div class="snapshot-cell-value">Live + studio</div><div class="snapshot-cell-sub">Classes, critiques, simulations</div></div>
+    <div class="snapshot-cell"><div class="snapshot-cell-label">Suitable for</div><div class="snapshot-cell-value">India · UAE · Global</div><div class="snapshot-cell-sub">Structured entry point</div></div>
+  </div>
+</section>
+
+<!-- ════ DIFFERENCE ════ -->
+<section class="difference" id="difference">
+  <div class="difference-intro">
+    <div class="label">What makes this different</div>
+    <h2>Event design, not event management.</h2>
+    <p>Most courses teach coordination and logistics. This one is built from a design foundation — space, mood, material, light and story.</p>
+  </div>
+  <div class="difference-grid">
+    <div class="diff-card">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rausch)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
+      <h3>A design-first foundation</h3>
+      <p>Built on Cindrebay's depth in interior design, materials, lighting and space planning — a genuine design backbone.</p>
+    </div>
+    <div class="diff-card">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rausch)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.68a2.12 2.12 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.12 2.12 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.12 2.12 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.12 2.12 0 0 0 1.597-1.16z"/></svg>
+      <h3>Portfolio-driven outcome</h3>
+      <p>You finish with a complete, professional event design project ready for your creative portfolio.</p>
+    </div>
+    <div class="diff-card">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rausch)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      <h3>Live project simulations</h3>
+      <p>Practical exercises drawn from real weddings, launches, corporate evenings and cultural gatherings.</p>
+    </div>
+    <div class="diff-card">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rausch)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <h3>Mentor-led reviews</h3>
+      <p>Feedback on mood boards, concepts, presentations and final proposals from working professionals.</p>
+    </div>
+    <div class="diff-card">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rausch)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+      <h3>Business &amp; freelance ready</h3>
+      <p>Client handling, proposals, pricing basics, vendor coordination and personal branding to begin independently.</p>
+    </div>
+    <div class="diff-card">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rausch)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></svg>
+      <h3>Sustainable &amp; responsible</h3>
+      <p>Reusable décor, inclusive layouts and guest comfort — designing beautifully and responsibly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CURRICULUM ════ -->
+<section class="curriculum" id="curriculum">
+  <div class="curriculum-header">
+    <div>
+      <div class="label">The curriculum · 15 modules</div>
+      <h2>From the foundations of design to a final capstone.</h2>
+    </div>
+  </div>
+  <div class="curriculum-grid">
+    <div class="module"><div class="module-num">01</div><div class="module-title">Foundations of Event Design</div><div class="module-sub">Event design as a creative profession.</div></div>
+    <div class="module"><div class="module-num">02</div><div class="module-title">Space, Venue &amp; Guest Flow</div><div class="module-sub">Reading a venue and planning movement.</div></div>
+    <div class="module"><div class="module-num">03</div><div class="module-title">Theme, Concept &amp; Storytelling</div><div class="module-sub">Mood boards and a design language.</div></div>
+    <div class="module"><div class="module-num">04</div><div class="module-title">Décor, Styling &amp; Material</div><div class="module-sub">Fabric, props, furniture, tablescapes.</div></div>
+    <div class="module"><div class="module-num">05</div><div class="module-title">Colour, Lighting &amp; Atmosphere</div><div class="module-sub">Light and colour to create mood.</div></div>
+    <div class="module"><div class="module-num">06</div><div class="module-title">Floral &amp; Botanical Elements</div><div class="module-sub">Floral styling within the theme.</div></div>
+    <div class="module"><div class="module-num">07</div><div class="module-title">Wedding &amp; Private Celebration</div><div class="module-sub">Intimate, luxurious, culturally aware.</div></div>
+    <div class="module"><div class="module-num">08</div><div class="module-title">Corporate, Launches &amp; Expos</div><div class="module-sub">Brand-led event design.</div></div>
+    <div class="module"><div class="module-num">09</div><div class="module-title">Dubai &amp; Luxury Aesthetics</div><div class="module-sub">The UAE celebration market.</div></div>
+    <div class="module"><div class="module-num">10</div><div class="module-title">Brief, Budget &amp; Vendors</div><div class="module-sub">Idea to client to execution.</div></div>
+    <div class="module"><div class="module-num">11</div><div class="module-title">Proposal, Pitch &amp; Portfolio</div><div class="module-sub">Presenting concepts professionally.</div></div>
+    <div class="module"><div class="module-num">12</div><div class="module-title">Technology, AI &amp; Visualisation</div><div class="module-sub">Digital tools for clarity.</div></div>
+    <div class="module"><div class="module-num">13</div><div class="module-title">Sustainability &amp; Accessibility</div><div class="module-sub">Beautiful, practical, responsible.</div></div>
+    <div class="module"><div class="module-num">14</div><div class="module-title">Business &amp; Personal Branding</div><div class="module-sub">Working independently.</div></div>
+    <div class="module"><div class="module-num">15</div><div class="module-title">Final Capstone Project</div><div class="module-sub">A complete portfolio concept.</div></div>
+  </div>
+</section>
+
+<!-- ════ PORTFOLIO TYPES ════ -->
+<section class="portfolio">
+  <div class="label">What you'll learn to design</div>
+  <h2>A portfolio across every kind of celebration.</h2>
+  <div class="portfolio-grid">
+    <div>
+      <div class="portfolio-card-img">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Luxury weddings">
+        <span class="badge">Guest favorite</span>
+      </div>
+      <div class="portfolio-card-title">Luxury weddings</div>
+      <div class="portfolio-card-sub">Mehendi · sangeet · receptions</div>
+    </div>
+    <div>
+      <div class="portfolio-card-img">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80" alt="Brand launches">
+      </div>
+      <div class="portfolio-card-title">Brand launches</div>
+      <div class="portfolio-card-sub">Product · fashion · lifestyle</div>
+    </div>
+    <div>
+      <div class="portfolio-card-img">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Corporate galas">
+      </div>
+      <div class="portfolio-card-title">Corporate galas</div>
+      <div class="portfolio-card-sub">Award nights · evenings</div>
+    </div>
+    <div>
+      <div class="portfolio-card-img">
+        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80" alt="Private celebrations">
+        <span class="badge">Guest favorite</span>
+      </div>
+      <div class="portfolio-card-title">Private celebrations</div>
+      <div class="portfolio-card-sub">Birthdays · anniversaries</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ INDIA ADVANTAGE ════ -->
+<section class="india-split">
+  <div class="india-img-col">
+    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80" alt="Indian celebration">
+  </div>
+  <div class="india-text-col">
+    <div class="label">The India advantage</div>
+    <h2>One of the richest celebration cultures in the world.</h2>
+    <p class="p1">Weddings, festivals, family ceremonies, inaugurations, college festivals and brand experiences form a vast, continuous landscape of creative opportunity.</p>
+    <p class="p2">Indian events are becoming more curated and design-conscious — and looking for people who bring taste, structure and originality.</p>
+    <p class="p3">Globally relevant, too — with international exposure from Cindrebay London and design collaborators in Italy, and face-to-face support in Dubai for UAE learners.</p>
+  </div>
+</section>
+
+<!-- ════ CTA BANNER ════ -->
+<section class="cta-banner" id="apply">
+  <img class="cta-banner-img"
+       src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=2000&q=80"
+       alt="Celebration">
+  <div class="cta-banner-overlay"></div>
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Begin your journey</div>
+    <h2>Design celebrations. Create experiences.</h2>
+    <p>A 4-month structured pathway into one of the most exciting creative industries of our time. No prior experience required — only an eye for detail.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary">Apply / Enrol now</a>
+      <a href="#" class="btn-ghost">Request course details</a>
+    </div>
+    <p class="cta-tagline">A celebration deserves more than arrangement. It deserves design.</p>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Cindrebay</div>
+      <div class="footer-brand-sub">Event Design</div>
+      <p class="footer-brand-desc">Professional Certificate in Event Design, Décor &amp; Experiential Styling. Anchored by Cindrebay India, with support from Dubai, London and Italy.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Programme</div>
+      <div class="footer-links">
+        <a href="#snapshot">Course snapshot</a>
+        <a href="#curriculum">Curriculum</a>
+        <a href="#difference">Why Cindrebay</a>
+        <a href="#careers">Career pathways</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Apply</div>
+      <div class="footer-links">
+        <a href="#apply">Apply / Enrol now</a>
+        <a href="#apply">Request details</a>
+        <a href="#apply">Book a call</a>
+        <a href="#">Meet the mentors</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Cindrebay. All rights reserved.</span>
+    <span>Designers by discipline. Storytellers by instinct.</span>
+  </div>
+</footer>
+
+</body>
+</html>
